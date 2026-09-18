@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Gemini Chatbot</title>
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Lightweight Markdown rendering (CDN, no build step required) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <!-- Sanitizes the HTML that marked.js produces before it's injected -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.5/purify.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Gemini Chatbot</h1>
+      <div class="header-actions">
+        <button id="clear-btn" class="btn btn-secondary" type="button" title="Clears the screen. Gemini still remembers earlier facts.">Clear Chat</button>
+        <button id="forget-btn" class="btn btn-danger" type="button" title="Permanently erases everything Gemini remembers.">Forget Everything</button>
+      </div>
+    </header>
+
+    <main id="messages" class="messages" aria-live="polite"></main>
+
+    <div id="error-banner" class="error-banner" hidden></div>
+
+    <div id="loading-indicator" class="loading-indicator" hidden>
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="loading-text">Gemini is thinking…</span>
+    </div>
+
+    <form id="chat-form" class="chat-form">
+      <textarea
+        id="message-input"
+        class="message-input"
+        placeholder="Type a message… (Shift+Enter for a new line)"
+        rows="1"
+        maxlength="8000"
+      ></textarea>
+      <button id="send-btn" class="btn btn-primary" type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
